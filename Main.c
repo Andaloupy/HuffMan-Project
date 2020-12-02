@@ -28,10 +28,16 @@ int main(){
     print_list(sorted_list);
 
     Tree* root;
+    char* s = malloc(sizeof(*s)*256);
+    s='0';
     root = create_huffman(sorted_list);
     printf("%d\n", root->poids);
-    Dico(root);
-    printf("%d\n", root->poids);
 
+    balance(&root);
+    Dico(root,s);
+    printf("%d\n", root->poids);
+    print_tree(root);
+
+    free(s);
     return 0;
 }

@@ -155,18 +155,22 @@ Tree* create_huffman(List* element){
     List* temp;
     temp = element;
     root = create_element_T();
+
     root->right = create_element_T();
     root->right->poids = temp->data;
     root->right->c = temp->c;
     temp=temp->next;
+
     root->left = create_element_T();
     root->left->poids = temp->data;
     root->left->c = temp->c;
     root->poids = root->left->poids + root->right->poids;
     temp=temp->next;
+
     while (temp != NULL){
         root2 = create_element_T();
         root2->right = root;
+
         root2->left = create_element_T();
         root2->left->poids = temp->data;
         root2->left->c = temp->c;
@@ -177,8 +181,7 @@ Tree* create_huffman(List* element){
     return root;
 }
 
-void Dico(Tree* root){
-    char* s = malloc(sizeof(*s)*256);
+void Dico(Tree* root, char* s){
     int i=0;
     Tree* temp;
     temp = root;
@@ -205,4 +208,80 @@ void Dico(Tree* root){
     }
     free(s);
     fclose(dico);
+}
+
+int tree_depth(Tree* tree){
+    if (tree == NULL){
+        return 0;
+    }
+    else{
+        int dl = tree_depth(tree->left);
+        int dr = tree_depth(tree->right);
+
+        if (dl > dr){
+            return dl + 1;
+        }
+        else{
+            return dr + 1;
+        }
+    }
+}
+
+int bf(Tree* tree){
+    if(tree == NULL){
+        return 0;
+    }
+    else{
+        return tree_depth(tree->right) - tree_depth(tree->left);
+    }
+}
+
+void right_rotation(Tree** tree){
+    if(*tree != NULL){
+        Tree* temp = (*tree)->left;
+        (*tree)->left = temp->right;
+        temp->right = *tree;
+        *tree = temp;
+    }
+}
+
+void left_rotation(Tree** tree){
+    if(*tree != NULL){
+        Tree* temp = (*tree)->right;
+        (*tree)->right = temp->left;
+        temp->left = *tree;
+        *tree = temp;
+    }
+}
+
+void balance(Tree** tree){
+    if (*tree != NULL){
+        balance(&((*tree)->left));
+        balance(&((*tree)->right));
+
+        int balance_factor = bf(*tree);
+        if(balance_factor <= -2){//Left - ????
+            if(bf((*tree)->left) > 0){// Left - Right
+                left_rotation(&((*tree)->left));
+            }
+            right_rotation(tree);// Left-Left
+        }
+        else if(balance_factor >= 2){//Right - ????
+            if(bf((*tree)->right) < 0){// Right - Left
+                right_rotation(&((*tree)->right));
+            }
+            left_rotation(tree);// Right-Right
+        }
+    }
+}
+
+void print_tree(Tree* tree){
+    if (tree != NULL){
+        print_tree(tree->left);
+        printf("%d ", tree->poids);
+        if (tree->c != '0')
+            printf(".%c ", tree->c);
+        print_tree(tree->right);
+        
+    }
 }
