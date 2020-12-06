@@ -181,33 +181,14 @@ Tree* create_huffman(List* element){
     return root;
 }
 
-void Dico(Tree* root, char* s){
-    int i=0;
-    Tree* temp;
-    temp = root;
-    FILE* dico = NULL;
-    dico = fopen("dico.txt", "w+");
-    if (dico!=NULL){
-        fprintf(dico, "%c:%s\n",temp->left->c,"0");
-        s[i]='1';
-        temp=temp->right;
-        fprintf(dico, "%c:%s%s\n",temp->left->c,"1","0");
-        s[i+1] = '1';
-        s[i+2] = '\0';
-        i+=1;
-        temp=temp->right;
-        while (temp->right != NULL){
-            fprintf(dico, "%c:%s%s\n",temp->left->c,s,"0");
-            s[i+1] = '1';
-            s[i+2] = '\0';
-            i+=1;
-            temp=temp->right;
-        }
-        fprintf(dico, "%c:%s",temp->c, s);
-
-    }
-    free(s);
-    fclose(dico);
+void Dico(Tree* root, char* s, FILE* dico){
+    concatenate(s,'0');
+    Dico(root->left, s, dico);
+    concatenate(s,'1');
+    Dico(root->right, s, dico);
+    if (root->left == NULL && root->right == NULL)
+        fprintf(dico, "%c:%s\n",root->c, s);
+    
 }
 
 int tree_depth(Tree* tree){
@@ -277,11 +258,21 @@ void balance(Tree** tree){
 
 void print_tree(Tree* tree){
     if (tree != NULL){
-        print_tree(tree->left);
-        printf("%d ", tree->poids);
         if (tree->c != '0')
-            printf(".%c ", tree->c);
+            if (tree->right == NULL && tree->left == NULL)
+                printf(".%c ", tree->c);
+        print_tree(tree->left);
         print_tree(tree->right);
         
     }
+}
+
+char* concatenate(char* s, char bit){
+    int i=0;
+    printf("bonjour");
+    while (s[i] != '\0')
+        i+=1;
+    s[i]=bit;
+    s[i+1]='\0';
+    return s;
 }

@@ -4,6 +4,8 @@
 #include <string.h>
 
 int main(){
+    FILE* dico = NULL;
+    dico = fopen("dico.txt", "w+");
     int test;
     output("Alice.txt");
     test = countchar("Alice.txt");
@@ -28,16 +30,15 @@ int main(){
     print_list(sorted_list);
 
     Tree* root;
-    char* s = malloc(sizeof(*s)*256);
-    s='0';
+    char* s = malloc(sizeof(*s)*16);
+    s[0]='\0'; 
     root = create_huffman(sorted_list);
     printf("%d\n", root->poids);
 
     balance(&root);
-    Dico(root,s);
+    Dico(root,s,dico);
     printf("%d\n", root->poids);
     print_tree(root);
-
     free(s);
     return 0;
 }

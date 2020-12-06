@@ -24,10 +24,12 @@ typedef struct Tree{
 
 Tree* create_element_T();
 Tree* create_huffman(List* element);
-void Dico(Tree* root, char* s);
+void Dico(Tree* root, char* s, FILE* dico);
 int tree_depth(Tree* tree);
 int bf(Tree* tree);
 void right_rotation(Tree** tree);
 void left_rotation(Tree** tree);
 void balance(Tree** tree);
 void print_tree(Tree* tree);
+
+char* concatenate(char* s, char bit);
