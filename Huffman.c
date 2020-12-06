@@ -21,7 +21,6 @@ void output(char*file){
                 }
                 fprintf(t,"%d",b);
             }
-        fprintf(t," ");
         }
     }
     fclose(f);
@@ -189,7 +188,6 @@ void Dico(Tree* root, char* s, FILE* dico){
             fprintf(dico, "%c%s\n",root->c, s);
         }
         decon(s);
-        printf("%s ", s);
         concatenate(s,'1');
         Dico(root->right,s,dico);
         decon(s);
@@ -266,7 +264,6 @@ void print_tree(Tree* tree){
     if (tree != NULL){
         if (tree->c != '0')
             if (tree->right == NULL && tree->left == NULL)
-                printf(".%c ", tree->c);
         print_tree(tree->left);
         print_tree(tree->right);
         
@@ -279,7 +276,6 @@ void concatenate(char* s, char bit){
         i+=1;
     s[i]=bit;
     s[i+1]='\0';
-    printf("%s ", s);
 }
 
 void decon(char* s){
@@ -288,20 +284,60 @@ void decon(char* s){
 }
 
 void translate(FILE* dico){
+    rewind(dico);
     char c;
-    int bit;
+    char bit[1000];
     FILE* texte = NULL;
     FILE* output = NULL;
     texte = fopen("Alice.txt", "r");
     output = fopen("OutputHuffman.txt", "w+");
     while ((c=fgetc(texte))!=EOF){
-        while (c!=fgetc(dico) && fgetc(dico)!=EOF){}
-        fscanf(dico, "%d", &bit);
-        printf("%c %d ",c, bit);
-        fprintf(output, "%d ", bit);
+        while (c!=fgetc(dico) /*&& fgetc(dico)!=EOF*/){}
+        fscanf(dico, "%s", bit);
+        //printf("%c %s\n",c, bit);
+        fprintf(output, "%s", bit);
         rewind(dico);
     }
     fclose(texte);
     fclose(output);
+}
 
+void compress_file(char* name){
+    FILE* dico = NULL;
+    dico = fopen("dico.txt", "w+");
+    int test;
+    output("Alice.txt");
+    test = countchar("Output.txt");
+    printf("%d\n",test);
+
+    List* list_car;
+    list_car = list_carac("Alice.txt");
+
+    List* sorted_list, *temp;
+    sorted_list = smallest(list_car);
+    list_remove((&list_car), sorted_list->data);
+    temp = sorted_list;
+    while (list_car->next != NULL){
+        temp->next = smallest(list_car);
+        list_remove((&list_car), temp->next->data);
+        temp = temp->next;
+    }
+    temp->next = list_car; 
+    list_remove((&list_car), temp->data);
+
+    Tree* root;
+    char* s = malloc(sizeof(*s)*16);
+    s[0]='\0'; 
+    root = create_huffman(sorted_list);
+
+    balance(&root);
+    Dico(root,s,dico);
+    print_tree(root);
+
+    translate(dico);
+    test=countchar("OutputHuffman.txt");
+    printf("%d",test);
+
+    free(s);
+    fclose(dico);
 }
