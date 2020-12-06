@@ -37,7 +37,7 @@ int main(){
 
     balance(&root);
     Dico(root,s,dico);
-    printf("%d\n", root->poids);
+    printf("%c\n", root->left->left->c);
     print_tree(root);
     free(s);
     fclose(dico);

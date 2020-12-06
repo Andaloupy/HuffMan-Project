@@ -185,12 +185,17 @@ void Dico(Tree* root, char* s, FILE* dico){
     if (root!=NULL){
         concatenate(s,'0');
         Dico(root->left, s, dico);
-        concatenate(s,'1');
-        Dico(root->right, s, dico);
         if (root->left == NULL && root->right == NULL){
-            printf("hello");
             fprintf(dico, "%c:%s\n",root->c, s);
         }
+        decon(s);
+        printf("%s ", s);
+        concatenate(s,'1');
+        Dico(root->right,s,dico);
+        decon(s);
+        /*Dico(root->right, s, dico);
+        concatenate(s,'1');*/
+        
     }
     
 }
@@ -271,12 +276,16 @@ void print_tree(Tree* tree){
     }
 }
 
-char* concatenate(char* s, char bit){
+void concatenate(char* s, char bit){
     int i=0;
-    printf("bonjour");
     while (s[i] != '\0')
         i+=1;
     s[i]=bit;
     s[i+1]='\0';
-    return s;
+    printf("%s ", s);
+}
+
+void decon(char* s){
+    int len=strlen(s);
+    s[len-1] = '\0';
 }

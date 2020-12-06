@@ -1,5 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
+
 
 typedef struct List{
     int data;
@@ -32,4 +34,5 @@ void left_rotation(Tree** tree);
 void balance(Tree** tree);
 void print_tree(Tree* tree);
 
-char* concatenate(char* s, char bit);
+void concatenate(char* s, char bit);
+void decon(char* s);
