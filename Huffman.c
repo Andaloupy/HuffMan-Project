@@ -182,12 +182,16 @@ Tree* create_huffman(List* element){
 }
 
 void Dico(Tree* root, char* s, FILE* dico){
-    concatenate(s,'0');
-    Dico(root->left, s, dico);
-    concatenate(s,'1');
-    Dico(root->right, s, dico);
-    if (root->left == NULL && root->right == NULL)
-        fprintf(dico, "%c:%s\n",root->c, s);
+    if (root!=NULL){
+        concatenate(s,'0');
+        Dico(root->left, s, dico);
+        concatenate(s,'1');
+        Dico(root->right, s, dico);
+        if (root->left == NULL && root->right == NULL){
+            printf("hello");
+            fprintf(dico, "%c:%s\n",root->c, s);
+        }
+    }
     
 }
 

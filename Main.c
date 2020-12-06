@@ -40,5 +40,6 @@ int main(){
     printf("%d\n", root->poids);
     print_tree(root);
     free(s);
+    fclose(dico);
     return 0;
 }
