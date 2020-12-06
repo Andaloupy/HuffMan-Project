@@ -306,7 +306,7 @@ void translate(FILE* dico, char* s){
 void compress_file(char* name){
     FILE* dico = NULL;
     dico = fopen("dico.txt", "w+");
-    int test;
+    int test, test2;
     output(name);
     test = countchar("Output.txt");
     printf("%d\n",test);
@@ -336,8 +336,11 @@ void compress_file(char* name){
     print_tree(root);
 
     translate(dico, name);
-    test=countchar("OutputHuffman.txt");
-    printf("%d",test);
+    test2=countchar("OutputHuffman.txt");
+    printf("%d",test2);
+
+    int coef = 100 - (test2*100)/test;
+    printf("\ncoef of reduction : %d percent", coef);
 
     free(s);
     fclose(dico);
