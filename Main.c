@@ -39,6 +39,9 @@ int main(){
     Dico(root,s,dico);
     printf("%c\n", root->left->left->c);
     print_tree(root);
+
+    translate(dico);
+
     free(s);
     fclose(dico);
     return 0;

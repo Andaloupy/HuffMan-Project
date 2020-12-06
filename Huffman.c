@@ -186,16 +186,13 @@ void Dico(Tree* root, char* s, FILE* dico){
         concatenate(s,'0');
         Dico(root->left, s, dico);
         if (root->left == NULL && root->right == NULL){
-            fprintf(dico, "%c:%s\n",root->c, s);
+            fprintf(dico, "%c%s\n",root->c, s);
         }
         decon(s);
         printf("%s ", s);
         concatenate(s,'1');
         Dico(root->right,s,dico);
         decon(s);
-        /*Dico(root->right, s, dico);
-        concatenate(s,'1');*/
-        
     }
     
 }
@@ -288,4 +285,23 @@ void concatenate(char* s, char bit){
 void decon(char* s){
     int len=strlen(s);
     s[len-1] = '\0';
+}
+
+void translate(FILE* dico){
+    char c;
+    int bit;
+    FILE* texte = NULL;
+    FILE* output = NULL;
+    texte = fopen("Alice.txt", "r");
+    output = fopen("OutputHuffman.txt", "w+");
+    while ((c=fgetc(texte))!=EOF){
+        while (c!=fgetc(dico)){}
+        fscanf(dico, "%d", &bit);
+        printf("%c %d ",c, bit);
+        fprintf(output, "%d ", bit);
+        rewind(dico);
+    }
+    fclose(texte);
+    fclose(output);
+
 }
