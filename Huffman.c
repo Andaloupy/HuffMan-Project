@@ -295,7 +295,7 @@ void translate(FILE* dico){
     texte = fopen("Alice.txt", "r");
     output = fopen("OutputHuffman.txt", "w+");
     while ((c=fgetc(texte))!=EOF){
-        while (c!=fgetc(dico)){}
+        while (c!=fgetc(dico) && fgetc(dico)!=EOF){}
         fscanf(dico, "%d", &bit);
         printf("%c %d ",c, bit);
         fprintf(output, "%d ", bit);

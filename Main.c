@@ -40,7 +40,7 @@ int main(){
     printf("%c\n", root->left->left->c);
     print_tree(root);
 
-    translate(dico);
+    //translate(dico);
 
     free(s);
     fclose(dico);
