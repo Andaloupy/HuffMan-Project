@@ -2,6 +2,8 @@
 #include <stdlib.h>
 #include "Huffman.h"
 #include <string.h>
+#include <time.h>
+
 
 void output(char*file){
 
@@ -293,7 +295,7 @@ void translate(FILE* dico, char* s){
     texte = fopen(s, "r");
     output = fopen("OutputHuffman.txt", "w+");
     while ((c=fgetc(texte))!=EOF){
-        while (c!=fgetc(dico) /*&& fgetc(dico)!=EOF*/){}
+        while (c!=fgetc(dico)){}
         fscanf(dico, "%s", bit);
         //printf("%c %s\n",c, bit);
         fprintf(output, "%s", bit);
@@ -334,6 +336,7 @@ void compress_file(char* name){
     //balance(&root);
     Dico(root,s,dico);
     print_tree(root);
+    printf("poids : %d\n", root->poids);
 
     translate(dico, name);
     test2=countchar("OutputHuffman.txt");
@@ -341,6 +344,7 @@ void compress_file(char* name){
 
     int coef = 100 - (test2*100)/test;
     printf("\ncoef of reduction : %d percent", coef);
+
 
     free(s);
     fclose(dico);
