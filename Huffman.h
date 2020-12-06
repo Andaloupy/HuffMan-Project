@@ -36,5 +36,5 @@ void print_tree(Tree* tree);
 
 void concatenate(char* s, char bit);
 void decon(char* s);
-void translate(FILE* dico);
+void translate(FILE* dico, char* s);
 void compress_file(char* name);
