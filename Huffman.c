@@ -47,7 +47,7 @@ List* create_element(char c){
     new->data = 1;
     new->c = c;
     new->next = NULL;
-    new->bitss = NULL;
+    new->bits = NULL;
     return new;
 }
 
@@ -80,7 +80,8 @@ List* list_carac(char* file){
 void print_list(List* l){
     if(l != NULL){
         printf("%d->", l->data);
-        printf("%c\n",l->c);
+        printf("%c ",l->c);
+        printf("%s\n ", l->bits);
         print_list(l->next);
     }
     else{
@@ -195,6 +196,7 @@ void Dico(Tree* root, char* s, FILE* dico){
         if (root->left == NULL && root->right == NULL){
             fprintf(dico, "%c%s\n",root->c, s);
             root->bit = s;
+           
         }
     }
     
@@ -333,8 +335,6 @@ void compress_file(char* name){
 
     List* list_car;
     list_car = list_carac(name);
-    int size = 0;
-    while (list_car!=NULL){size+=1;}
 
     List* sorted_list, *temp;
     sorted_list = smallest(list_car);
@@ -348,12 +348,17 @@ void compress_file(char* name){
     temp->next = list_car; 
     list_remove((&list_car), temp->data);
 
+    int size=0;
+    temp = sorted_list;
+    while (temp!=NULL){size+=1; temp=temp->next;}
+    char character[size];
+    char* bits[size];
+
+
     Tree* root;
-    char* s = malloc(sizeof(*s)*16);
+    char* s = malloc(sizeof(*s)*32);
     s[0]='\0'; 
     root = create_huffman(sorted_list);
-
-    //List* list_dico[size];
 
     Dico(root,s,dico);
     print_tree(root);

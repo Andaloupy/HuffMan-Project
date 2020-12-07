@@ -8,7 +8,7 @@
 typedef struct List{
     int data;
     char c;
-    char* bitss; 
+    char* bits; 
     struct List* next;
 }List; 
 
