@@ -8,6 +8,7 @@
 typedef struct List{
     int data;
     char c;
+    char* bitss; 
     struct List* next;
 }List; 
 
@@ -21,6 +22,7 @@ List* smallest(List *l);
 
 typedef struct Tree{
     int poids;
+    char* bit;
     char c;
     struct Tree* left;
     struct Tree* right;

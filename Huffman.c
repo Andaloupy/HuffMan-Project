@@ -47,6 +47,7 @@ List* create_element(char c){
     new->data = 1;
     new->c = c;
     new->next = NULL;
+    new->bitss = NULL;
     return new;
 }
 
@@ -193,6 +194,7 @@ void Dico(Tree* root, char* s, FILE* dico){
         decon(s);
         if (root->left == NULL && root->right == NULL){
             fprintf(dico, "%c%s\n",root->c, s);
+            root->bit = s;
         }
     }
     
@@ -297,12 +299,28 @@ void translate(FILE* dico, char* s){
     while ((c=fgetc(texte))!=EOF){
         while (c!=fgetc(dico)){}
         fscanf(dico, "%s", bit);
-        //printf("%c %s\n",c, bit);
         fprintf(output, "%s", bit);
         rewind(dico);
     }
     fclose(texte);
     fclose(output);
+}
+
+void free_list(List* l){
+    List* tmp;
+    while (l!=NULL){
+        tmp = l;
+        l = l->next;
+        free(tmp);
+    }
+}
+
+void free_tree(Tree* t){
+    if (t!=NULL){
+        free_tree(t->left);
+        free_tree(t->right);
+        free(t);
+    }
 }
 
 void compress_file(char* name){
@@ -315,6 +333,8 @@ void compress_file(char* name){
 
     List* list_car;
     list_car = list_carac(name);
+    int size = 0;
+    while (list_car!=NULL){size+=1;}
 
     List* sorted_list, *temp;
     sorted_list = smallest(list_car);
@@ -333,10 +353,10 @@ void compress_file(char* name){
     s[0]='\0'; 
     root = create_huffman(sorted_list);
 
-    //balance(&root);
+    //List* list_dico[size];
+
     Dico(root,s,dico);
     print_tree(root);
-    printf("poids : %d\n", root->poids);
 
     translate(dico, name);
     test2=countchar("OutputHuffman.txt");
@@ -348,4 +368,8 @@ void compress_file(char* name){
 
     free(s);
     fclose(dico);
+    free_list(list_car);
+    free(sorted_list);
+    free_tree(root);
+
 }
