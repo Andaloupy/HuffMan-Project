@@ -2,6 +2,8 @@
 #include <stdlib.h>
 #include "Huffman.h"
 #include <string.h>
+#include <time.h>
+
 
 void output(char*file){
 
@@ -21,7 +23,6 @@ void output(char*file){
                 }
                 fprintf(t,"%d",b);
             }
-        fprintf(t," ");
         }
     }
     fclose(f);
@@ -40,15 +41,8 @@ int countchar(char*file){
     return cpt;
 }
 
-List* create_element(char c){
-    List* new;
-    new=(List*)malloc(sizeof(List));
-    new->data = 1;
-    new->c = c;
-    new->next = NULL;
-    return new;
-}
 
+//put the character of the file into SLL
 List* list_carac(char* file){
     char c;
     List* list_car;
@@ -78,12 +72,13 @@ List* list_carac(char* file){
 void print_list(List* l){
     if(l != NULL){
         printf("%d->", l->data);
-        printf("%c\n",l->c);
+        printf("%c ",l->c);
+        printf("%s\n ", l->bits);
         print_list(l->next);
     }
     else{
         printf("X\n");
-    }   
+    }
 }
 
 void list_remove(List** l, int n){
@@ -109,7 +104,7 @@ void list_remove(List** l, int n){
         }else{
             buffer = buffer->next;
         }
-        
+
     }
 
     if ((*l)->data == n && count==0)
@@ -119,7 +114,7 @@ void list_remove(List** l, int n){
         free(buffer);
     }
 }
-    
+
 List* smallest(List *l){
     List* temp, *tem;
     int min=10000000, pos=0, count=0;
@@ -140,69 +135,165 @@ List* smallest(List *l){
     return tem;
 }
 
-Tree* create_element_T(){
-    Tree* new;
-    new = (Tree*)malloc(sizeof(Tree));
-    new->poids = 0;
-    new->left = NULL;
-    new->right = NULL;
-    new->c = '0';
-    return new;
-}
+//create the huffman tree
 
 Tree* create_huffman(List* element){
     Tree* root, *root2;
     List* temp;
     temp = element;
     root = create_element_T();
+
     root->right = create_element_T();
     root->right->poids = temp->data;
     root->right->c = temp->c;
     temp=temp->next;
+
     root->left = create_element_T();
     root->left->poids = temp->data;
     root->left->c = temp->c;
     root->poids = root->left->poids + root->right->poids;
     temp=temp->next;
+
     while (temp != NULL){
         root2 = create_element_T();
         root2->right = root;
+
         root2->left = create_element_T();
         root2->left->poids = temp->data;
         root2->left->c = temp->c;
         temp = temp->next;
         root2->poids = root2->left->poids + root2->right->poids;
         root = root2;
+        balance(&root);
     }
     return root;
 }
+//our dico will be stored in a file that will help to encode
+void Dico(Tree* root, char* s, FILE* dico){
+    if (root!=NULL){
+        concatenate(s,'0');
+        Dico(root->left, s, dico);
+        decon(s);
+        concatenate(s,'1');
+        Dico(root->right,s,dico);
+        decon(s);
+        if (root->left == NULL && root->right == NULL){
+            fprintf(dico, "%c%s\n",root->c, s);
+            root->bit = s;
 
-void Dico(Tree* root){
-    char* s = malloc(sizeof(*s)*256);
-    int i=0;
-    Tree* temp;
-    temp = root;
-    FILE* dico = NULL;
-    dico = fopen("dico.txt", "w+");
-    if (dico!=NULL){
-        fprintf(dico, "%c:%s\n",temp->left->c,"0");
-        s[i]='1';
-        temp=temp->right;
-        fprintf(dico, "%c:%s%s\n",temp->left->c,"1","0");
-        s[i+1] = '1';
-        s[i+2] = '\0';
-        i+=1;
-        temp=temp->right;
-        while (temp->right != NULL){
-            fprintf(dico, "%c:%s%s\n",temp->left->c,s,"0");
-            s[i+1] = '1';
-            s[i+2] = '\0';
-            i+=1;
-            temp=temp->right;
         }
-        fprintf(dico, "%c:%s",temp->c, s);
+    }
+
+}
+
+
+
+void print_tree(Tree* tree){
+    if (tree != NULL){
+        if (tree->c != '0')
+            if (tree->right == NULL && tree->left == NULL)
+        print_tree(tree->left);
+        print_tree(tree->right);
 
     }
+}
+
+void concatenate(char* s, char bit){
+    int i=0;
+    while (s[i] != '\0')
+        i+=1;
+    s[i]=bit;
+    s[i+1]='\0';
+}
+
+void decon(char* s){
+    int len=strlen(s);
+    s[len-1] = '\0';
+}
+
+//function to encode the text
+void translate(FILE* dico, char* s){
+    rewind(dico);
+    char c;
+    char bit[1000];
+    FILE* texte = NULL;
+    FILE* output = NULL;
+    texte = fopen(s, "r");
+    output = fopen("OutputHuffman.txt", "w+");
+    while ((c=fgetc(texte))!=EOF){
+        while (c!=fgetc(dico)){}
+        fscanf(dico, "%s", bit);
+        fprintf(output, "%s", bit);
+        rewind(dico);
+    }
+    fclose(texte);
+    fclose(output);
+}
+//never forget to free
+void free_list(List* l){
+    List* tmp;
+    while (l!=NULL){
+        tmp = l;
+        l = l->next;
+        free(tmp);
+    }
+}
+
+void free_tree(Tree* t){
+    if (t!=NULL){
+        free_tree(t->left);
+        free_tree(t->right);
+        free(t);
+    }
+}
+
+//we will now compress the file to make it shorter
+void compress_file(char* name){
+
+    FILE* dico = NULL;
+    dico = fopen("dico.txt", "w+");
+    int test, test2;
+    output(name);
+    test = countchar("Output.txt");
+    printf("%d\n",test);
+
+    List* list_car;
+    list_car = list_carac(name);
+
+    List* sorted_list, *temp;
+    sorted_list = smallest(list_car);
+    list_remove((&list_car), sorted_list->data);
+    temp = sorted_list;
+    while (list_car->next != NULL){
+        temp->next = smallest(list_car);
+        list_remove((&list_car), temp->next->data);
+        temp = temp->next;
+    }
+    temp->next = list_car;
+    list_remove((&list_car), temp->data);
+
+    int size=0;
+    temp = sorted_list;
+    while (temp!=NULL){size+=1; temp=temp->next;}
+    Tree* root;
+    char* s = malloc(sizeof(*s)*32);
+    s[0]='\0';
+    root = create_huffman(sorted_list);
+
+    Dico(root,s,dico);
+    print_tree(root);
+
+    translate(dico, name);
+    test2=countchar("OutputHuffman.txt");
+    printf("%d",test2);
+
+    int coef = 100 - (test2*100)/test;
+    printf("\ncoef of reduction : %d percent", coef);
+
+
     free(s);
     fclose(dico);
+    free_list(list_car);
+    free(sorted_list);
+    free_tree(root);
 }
