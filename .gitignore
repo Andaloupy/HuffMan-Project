@@ -50,4 +50,10 @@ modules.order
 Module.symvers
 Mkfile.old
 dkms.conf
-input.txt
+Main.c
+Output.txt
+Huffman.h
+Huffman.c
+Huffman_Coding_PROJECT.pdf
+dico.txt
+Alice.txt
