@@ -178,7 +178,7 @@ void Dico(Tree* root, char* s, FILE* dico){
         Dico(root->right,s,dico);
         decon(s);
         if (root->left == NULL && root->right == NULL){
-            fprintf(dico, "%c%s\n",root->c, s);
+            fprintf(dico, "%c:%s\n",root->c, s);
             root->bit = s;
 
         }
@@ -222,7 +222,7 @@ void translate(FILE* dico, char* s){
     output = fopen("OutputHuffman.txt", "w+");
     while ((c=fgetc(texte))!=EOF){
         while (c!=fgetc(dico)){}
-        fscanf(dico, "%s", bit);
+        fscanf(dico, ":%s", bit);
         fprintf(output, "%s", bit);
         rewind(dico);
     }
