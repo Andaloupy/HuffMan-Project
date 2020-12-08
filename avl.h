@@ -7,7 +7,7 @@
 #include "structures.h"
 
 int tree_depth(Tree* tree);
-int bf(Tree* tree);
+int balance_factor(Tree* tree);
 void right_rotation(Tree** tree);
 void left_rotation(Tree** tree);
 void balance(Tree** tree);

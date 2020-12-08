@@ -18,7 +18,7 @@ int tree_depth(Tree* tree){
     }
 }
 
-int bf(Tree* tree){
+int balance_factor(Tree* tree){
     if(tree == NULL){
         return 0;
     }
@@ -50,15 +50,15 @@ void balance(Tree** tree){
         balance(&((*tree)->left));
         balance(&((*tree)->right));
 
-        int balance_factor = bf(*tree);
-        if(balance_factor <= -2){//Left - ????
-            if(bf((*tree)->left) > 0){// Left - Right
+        int bf = balance_factor(*tree);
+        if(bf <= -2){//Left - ????
+            if(balance_factor((*tree)->left) > 0){// Left - Right
                 left_rotation(&((*tree)->left));
             }
             right_rotation(tree);// Left-Left
         }
-        else if(balance_factor >= 2){//Right - ????
-            if(bf((*tree)->right) < 0){// Right - Left
+        else if(bf >= 2){//Right - ????
+            if(balance_factor((*tree)->right) < 0){// Right - Left
                 right_rotation(&((*tree)->right));
             }
             left_rotation(tree);// Right-Right

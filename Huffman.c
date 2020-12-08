@@ -179,8 +179,6 @@ void Dico(Tree* root, char* s, FILE* dico){
         decon(s);
         if (root->left == NULL && root->right == NULL){
             fprintf(dico, "%c:%s\n",root->c, s);
-            root->bit = s;
-
         }
     }
 

@@ -16,8 +16,6 @@ int main(){
     t2=clock();
     double temps = (t2-t1);
     printf("\nCompressed in %f seconds\n", temps/1000);
-    //printf("%ld\n", t1);
-    //printf("%ld", t2);
     return 0;
 }
 
