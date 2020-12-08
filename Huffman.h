@@ -30,7 +30,7 @@ typedef struct Tree{
 
 Tree* create_element_T();
 Tree* create_huffman(List* element);
-void Dico(Tree* root, char* s, FILE* dico);
+void Dico(Tree* root, char* s, FILE* dico, char** charac, char*** bits, int i);
 int tree_depth(Tree* tree);
 int bf(Tree* tree);
 void right_rotation(Tree** tree);

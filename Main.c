@@ -12,7 +12,7 @@ int main(){
     t1 = clock();
     compress_file(s);
     t2=clock();
-    double temps = (t2-t1)/CLOCKS_PER_SEC;
+    double temps = (t2-t1)/1000;
     printf("\ntemps = %f\n", temps);
     printf("%ld\n", t1);
     printf("%ld", t2);

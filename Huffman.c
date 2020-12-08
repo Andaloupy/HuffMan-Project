@@ -185,18 +185,19 @@ Tree* create_huffman(List* element){
     return root;
 }
 
-void Dico(Tree* root, char* s, FILE* dico){
+void Dico(Tree* root, char* s, FILE* dico, char** charac, char*** bits,int i){
     if (root!=NULL){
         concatenate(s,'0');
-        Dico(root->left, s, dico);
+        Dico(root->left, s, dico, charac, bits ,i);
         decon(s);
         concatenate(s,'1');
-        Dico(root->right,s,dico);
+        Dico(root->right, s, dico, charac, bits, i);
         decon(s);
         if (root->left == NULL && root->right == NULL){
-            fprintf(dico, "%c%s\n",root->c, s);
-            root->bit = s;
-           
+            fprintf(dico, "%c:%s\n",root->c, s);
+            (*charac)[i]=root->c;
+            *(*bits+i)=s;
+            i+=1;
         }
     }
     
@@ -300,8 +301,8 @@ void translate(FILE* dico, char* s){
     output = fopen("OutputHuffman.txt", "w+");
     while ((c=fgetc(texte))!=EOF){
         while (c!=fgetc(dico)){}
-        fscanf(dico, "%s", bit);
-        fprintf(output, "%s", bit);
+        fscanf(dico, ":%s", bit);
+        fprintf(output,"%s", bit);
         rewind(dico);
     }
     fclose(texte);
@@ -351,8 +352,11 @@ void compress_file(char* name){
     int size=0;
     temp = sorted_list;
     while (temp!=NULL){size+=1; temp=temp->next;}
-    char character[size];
-    char* bits[size];
+
+    char* charac = (char*)malloc(sizeof(char)*size);
+    char** bits =(char**)malloc(sizeof(char*)*size);
+    for (int i=0; i<size; i++)
+        bits[i] = (char*)malloc(sizeof(char)*16); 
 
 
     Tree* root;
@@ -360,12 +364,16 @@ void compress_file(char* name){
     s[0]='\0'; 
     root = create_huffman(sorted_list);
 
-    Dico(root,s,dico);
+    int i=0;
+    Dico(root, s,dico, &charac, &bits, i);
     print_tree(root);
+
+    printf("%c %s \n", charac[0], bits[1]);
 
     translate(dico, name);
     test2=countchar("OutputHuffman.txt");
     printf("%d",test2);
+
 
     int coef = 100 - (test2*100)/test;
     printf("\ncoef of reduction : %d percent", coef);
@@ -376,5 +384,7 @@ void compress_file(char* name){
     free_list(list_car);
     free(sorted_list);
     free_tree(root);
+    free(charac);
+    free(bits);
 
 }
