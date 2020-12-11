@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.20"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>cc: Huffman.h Source File</title>
+<title>cc: Code/Huffman.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -46,7 +46,6 @@ $(function() {
 });
 /* @license-end */</script>
 <div id="main-nav"></div>
-</div><!-- top -->
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -61,12 +60,17 @@ $(function() {
 </iframe>
 </div>
 
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_23fdee2f6995db16c755697cdf620cf4.html">Code</a></li>  </ul>
+</div>
+</div><!-- top -->
 <div class="header">
   <div class="headertitle">
 <div class="title">Huffman.h</div>  </div>
 </div><!--header-->
 <div class="contents">
-<a href="_huffman_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160; </div>
+<a href="_code_2_huffman_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160; </div>
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#ifndef Huffman_h</span></div>
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#define Huffman_h</span></div>
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160; </div>
@@ -85,26 +89,26 @@ $(function() {
 <div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160; </div>
 <div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<a class="code" href="struct_list.html">List</a>* <a class="code" href="_code_2_huffman_8h.html#ad81593c1ba9f1186c1429e0889b01bdb">list_carac</a>(<span class="keywordtype">char</span>* file);</div>
 <div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160; </div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;<span class="keywordtype">void</span> <a class="code" href="_code_2_huffman_8h.html#ae5d94cb8dca53296a644097d91be2385">print_list</a>(<a class="code" href="struct_list.html">List</a>* l);</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;<span class="keywordtype">void</span> <a class="code" href="_code_2_huffman_8h.html#a6a0b13ec3ab82f8593f10a16141e30fd">print_tree</a>(<a class="code" href="struct_tree.html">Tree</a>* tree);</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160; </div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160; </div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;<span class="keywordtype">void</span> <a class="code" href="_code_2_huffman_8h.html#ab077b1393d61194af34c132ab89cf016">list_remove</a>(<a class="code" href="struct_list.html">List</a>** l, <span class="keywordtype">int</span> n);</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160; </div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;<a class="code" href="struct_list.html">List</a>* <a class="code" href="_code_2_huffman_8h.html#a76c0d4c9ccc3f81443c893cd0eb9843f">smallest</a>(<a class="code" href="struct_list.html">List</a> *l);</div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160; </div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160; </div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;<a class="code" href="struct_tree.html">Tree</a>* <a class="code" href="_code_2_huffman_8h.html#aab5b95828fa3142fd592bbd8a5c2a554">create_huffman</a>(<a class="code" href="struct_list.html">List</a>* element);</div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160; </div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;<span class="keywordtype">void</span> <a class="code" href="_code_2_huffman_8h.html#a9610f6d83965b141cfb8b8ee6d19d1c6">Dico</a>(<a class="code" href="struct_tree.html">Tree</a>* root, <span class="keywordtype">char</span>* s, FILE* dico);</div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160; </div>
-<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;<span class="keywordtype">void</span> <a class="code" href="_code_2_huffman_8h.html#a7c5db9ab5a15f3404fef469ca74e0888">concatenate</a>(<span class="keywordtype">char</span>* s, <span class="keywordtype">char</span> bit);</div>
-<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;<span class="keywordtype">void</span> <a class="code" href="_code_2_huffman_8h.html#a6d4366cd16c4138e401ad48a79460eb8">decon</a>(<span class="keywordtype">char</span>* s);</div>
-<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;<span class="keywordtype">void</span> <a class="code" href="_code_2_huffman_8h.html#a4647c9c452874d80d31476ea3271a85d">translate</a>(FILE* dico, <span class="keywordtype">char</span>* s);</div>
-<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160; </div>
-<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;<span class="keywordtype">void</span> <a class="code" href="_code_2_huffman_8h.html#ac550f4a8b4baaf1b4404394c4472a76c">compress_file</a>(<span class="keywordtype">char</span>* name);</div>
-<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160; </div>
-<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;<span class="preprocessor">#endif // Huffman_h</span></div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;<span class="keywordtype">void</span> <a class="code" href="_code_2_huffman_8h.html#ae5d94cb8dca53296a644097d91be2385">print_list</a>(<a class="code" href="struct_list.html">List</a>* l);</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;<span class="keywordtype">void</span> <a class="code" href="_code_2_huffman_8h.html#a6a0b13ec3ab82f8593f10a16141e30fd">print_tree</a>(<a class="code" href="struct_tree.html">Tree</a>* tree);</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160; </div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160; </div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;<span class="keywordtype">void</span> <a class="code" href="_code_2_huffman_8h.html#ab077b1393d61194af34c132ab89cf016">list_remove</a>(<a class="code" href="struct_list.html">List</a>** l, <span class="keywordtype">int</span> n);</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160; </div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;<a class="code" href="struct_list.html">List</a>* <a class="code" href="_code_2_huffman_8h.html#a76c0d4c9ccc3f81443c893cd0eb9843f">smallest</a>(<a class="code" href="struct_list.html">List</a> *l);</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160; </div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160; </div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;<a class="code" href="struct_tree.html">Tree</a>* <a class="code" href="_code_2_huffman_8h.html#aab5b95828fa3142fd592bbd8a5c2a554">create_huffman</a>(<a class="code" href="struct_list.html">List</a>* element);</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160; </div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;<span class="keywordtype">void</span> <a class="code" href="_code_2_huffman_8h.html#a9610f6d83965b141cfb8b8ee6d19d1c6">Dico</a>(<a class="code" href="struct_tree.html">Tree</a>* root, <span class="keywordtype">char</span>* s, FILE* dico);</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160; </div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;<span class="keywordtype">void</span> <a class="code" href="_code_2_huffman_8h.html#a7c5db9ab5a15f3404fef469ca74e0888">concatenate</a>(<span class="keywordtype">char</span>* s, <span class="keywordtype">char</span> bit);</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;<span class="keywordtype">void</span> <a class="code" href="_code_2_huffman_8h.html#a6d4366cd16c4138e401ad48a79460eb8">decon</a>(<span class="keywordtype">char</span>* s);</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;<span class="keywordtype">void</span> <a class="code" href="_code_2_huffman_8h.html#a4647c9c452874d80d31476ea3271a85d">translate</a>(FILE* dico, <span class="keywordtype">char</span>* s);</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160; </div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;<span class="keywordtype">void</span> <a class="code" href="_code_2_huffman_8h.html#ac550f4a8b4baaf1b4404394c4472a76c">compress_file</a>(<span class="keywordtype">char</span>* name);</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160; </div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;<span class="preprocessor">#endif // Huffman_h</span></div>
 </div><!-- fragment --></div><!-- contents -->
 <div class="ttc" id="a_code_2_huffman_8h_html_a6d4366cd16c4138e401ad48a79460eb8"><div class="ttname"><a href="_code_2_huffman_8h.html#a6d4366cd16c4138e401ad48a79460eb8">decon</a></div><div class="ttdeci">void decon(char *s)</div><div class="ttdoc">Function to remove the last character of a string.</div><div class="ttdef"><b>Definition:</b> Huffman.c:207</div></div>
 <div class="ttc" id="a_code_2_huffman_8h_html_ade04cb0300c2e82f2625b10c960bd7f9"><div class="ttname"><a href="_code_2_huffman_8h.html#ade04cb0300c2e82f2625b10c960bd7f9">countchar</a></div><div class="ttdeci">int countchar(char *file)</div><div class="ttdoc">return the number of character in a .txt file.   Example ;</div><div class="ttdef"><b>Definition:</b> Huffman.c:31</div></div>
