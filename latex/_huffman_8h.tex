@@ -36,19 +36,14 @@ void \mbox{\hyperlink{_huffman_8h_ab077b1393d61194af34c132ab89cf016}{list\+\_\+r
 \mbox{\hyperlink{struct_tree}{Tree}} $\ast$ \mbox{\hyperlink{_huffman_8h_aab5b95828fa3142fd592bbd8a5c2a554}{create\+\_\+huffman}} (\mbox{\hyperlink{struct_list}{List}} $\ast$element)
 \begin{DoxyCompactList}\small\item\em Create a huffman tree from a list. ~\newline
  Example \+: \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{_huffman_8h_a9610f6d83965b141cfb8b8ee6d19d1c6}\label{_huffman_8h_a9610f6d83965b141cfb8b8ee6d19d1c6}} 
 void \mbox{\hyperlink{_huffman_8h_a9610f6d83965b141cfb8b8ee6d19d1c6}{Dico}} (\mbox{\hyperlink{struct_tree}{Tree}} $\ast$root, char $\ast$s, F\+I\+LE $\ast$dico)
 \begin{DoxyCompactList}\small\item\em create a dictionnary.\+txt File to compress the .txt from the Huffman tree. \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{_huffman_8h_a7c5db9ab5a15f3404fef469ca74e0888}\label{_huffman_8h_a7c5db9ab5a15f3404fef469ca74e0888}} 
 void \mbox{\hyperlink{_huffman_8h_a7c5db9ab5a15f3404fef469ca74e0888}{concatenate}} (char $\ast$s, char bit)
 \begin{DoxyCompactList}\small\item\em Function to concatenate a string with a character. \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{_huffman_8h_a6d4366cd16c4138e401ad48a79460eb8}\label{_huffman_8h_a6d4366cd16c4138e401ad48a79460eb8}} 
 void \mbox{\hyperlink{_huffman_8h_a6d4366cd16c4138e401ad48a79460eb8}{decon}} (char $\ast$s)
 \begin{DoxyCompactList}\small\item\em Function to remove the last character of a string. \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{_huffman_8h_a4647c9c452874d80d31476ea3271a85d}\label{_huffman_8h_a4647c9c452874d80d31476ea3271a85d}} 
 void \mbox{\hyperlink{_huffman_8h_a4647c9c452874d80d31476ea3271a85d}{translate}} (F\+I\+LE $\ast$dico, char $\ast$s)
 \begin{DoxyCompactList}\small\item\em Function that compress a .txt thanks to the dictionnary. \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{_huffman_8h_ac550f4a8b4baaf1b4404394c4472a76c}\label{_huffman_8h_ac550f4a8b4baaf1b4404394c4472a76c}} 
 void \mbox{\hyperlink{_huffman_8h_ac550f4a8b4baaf1b4404394c4472a76c}{compress\+\_\+file}} (char $\ast$name)
 \begin{DoxyCompactList}\small\item\em Do all the necessary step to compress a .txt file. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
@@ -65,6 +60,32 @@ Sébastien Latronche
 
 
 \doxysubsection{Function Documentation}
+\mbox{\Hypertarget{_huffman_8h_ac550f4a8b4baaf1b4404394c4472a76c}\label{_huffman_8h_ac550f4a8b4baaf1b4404394c4472a76c}} 
+\index{Huffman.h@{Huffman.h}!compress\_file@{compress\_file}}
+\index{compress\_file@{compress\_file}!Huffman.h@{Huffman.h}}
+\doxysubsubsection{\texorpdfstring{compress\_file()}{compress\_file()}}
+{\footnotesize\ttfamily void compress\+\_\+file (\begin{DoxyParamCaption}\item[{char $\ast$}]{name }\end{DoxyParamCaption})}
+
+
+
+Do all the necessary step to compress a .txt file. 
+
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\mbox{\Hypertarget{_huffman_8h_a7c5db9ab5a15f3404fef469ca74e0888}\label{_huffman_8h_a7c5db9ab5a15f3404fef469ca74e0888}} 
+\index{Huffman.h@{Huffman.h}!concatenate@{concatenate}}
+\index{concatenate@{concatenate}!Huffman.h@{Huffman.h}}
+\doxysubsubsection{\texorpdfstring{concatenate()}{concatenate()}}
+{\footnotesize\ttfamily void concatenate (\begin{DoxyParamCaption}\item[{char $\ast$}]{s,  }\item[{char}]{bit }\end{DoxyParamCaption})}
+
+
+
+Function to concatenate a string with a character. 
+
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
 \mbox{\Hypertarget{_huffman_8h_ade04cb0300c2e82f2625b10c960bd7f9}\label{_huffman_8h_ade04cb0300c2e82f2625b10c960bd7f9}} 
 \index{Huffman.h@{Huffman.h}!countchar@{countchar}}
 \index{countchar@{countchar}!Huffman.h@{Huffman.h}}
@@ -110,6 +131,32 @@ Create a huffman tree from a list. ~\newline
 \begin{DoxyReturn}{Returns}
 Tree$\ast$ 
 \end{DoxyReturn}
+\mbox{\Hypertarget{_huffman_8h_a6d4366cd16c4138e401ad48a79460eb8}\label{_huffman_8h_a6d4366cd16c4138e401ad48a79460eb8}} 
+\index{Huffman.h@{Huffman.h}!decon@{decon}}
+\index{decon@{decon}!Huffman.h@{Huffman.h}}
+\doxysubsubsection{\texorpdfstring{decon()}{decon()}}
+{\footnotesize\ttfamily void decon (\begin{DoxyParamCaption}\item[{char $\ast$}]{s }\end{DoxyParamCaption})}
+
+
+
+Function to remove the last character of a string. 
+
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\mbox{\Hypertarget{_huffman_8h_a9610f6d83965b141cfb8b8ee6d19d1c6}\label{_huffman_8h_a9610f6d83965b141cfb8b8ee6d19d1c6}} 
+\index{Huffman.h@{Huffman.h}!Dico@{Dico}}
+\index{Dico@{Dico}!Huffman.h@{Huffman.h}}
+\doxysubsubsection{\texorpdfstring{Dico()}{Dico()}}
+{\footnotesize\ttfamily void Dico (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_tree}{Tree}} $\ast$}]{root,  }\item[{char $\ast$}]{s,  }\item[{F\+I\+LE $\ast$}]{dico }\end{DoxyParamCaption})}
+
+
+
+create a dictionnary.\+txt File to compress the .txt from the Huffman tree. 
+
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
 \mbox{\Hypertarget{_huffman_8h_ad81593c1ba9f1186c1429e0889b01bdb}\label{_huffman_8h_ad81593c1ba9f1186c1429e0889b01bdb}} 
 \index{Huffman.h@{Huffman.h}!list\_carac@{list\_carac}}
 \index{list\_carac@{list\_carac}!Huffman.h@{Huffman.h}}
@@ -150,7 +197,12 @@ remove an element from a list, here depending on n, a number. ~\newline
 \begin{DoxyCode}{0}
 \DoxyCodeLine{\mbox{\hyperlink{_huffman_8h_ab077b1393d61194af34c132ab89cf016}{list\_remove}}(list\_charac, 1);}
 \end{DoxyCode}
- \mbox{\Hypertarget{_huffman_8h_a5a387343ff6444021bde013832f13aa5}\label{_huffman_8h_a5a387343ff6444021bde013832f13aa5}} 
+
+
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\mbox{\Hypertarget{_huffman_8h_a5a387343ff6444021bde013832f13aa5}\label{_huffman_8h_a5a387343ff6444021bde013832f13aa5}} 
 \index{Huffman.h@{Huffman.h}!output@{output}}
 \index{output@{output}!Huffman.h@{Huffman.h}}
 \doxysubsubsection{\texorpdfstring{output()}{output()}}
@@ -166,7 +218,7 @@ Function to translate a .txt in binary. ~\newline
 \DoxyCodeLine{\mbox{\hyperlink{_huffman_8h_a5a387343ff6444021bde013832f13aa5}{output}}(Texte.txt);}
 \end{DoxyCode}
  \begin{DoxyReturn}{Returns}
-nothing.
+nothing
 \end{DoxyReturn}
 
 \begin{DoxyParams}{Parameters}
@@ -188,6 +240,9 @@ display a list to the user.
 {\em l} & \\
 \hline
 \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
 \mbox{\Hypertarget{_huffman_8h_a6a0b13ec3ab82f8593f10a16141e30fd}\label{_huffman_8h_a6a0b13ec3ab82f8593f10a16141e30fd}} 
 \index{Huffman.h@{Huffman.h}!print\_tree@{print\_tree}}
 \index{print\_tree@{print\_tree}!Huffman.h@{Huffman.h}}
@@ -203,6 +258,11 @@ display a tree to the user.
 {\em tree} & \\
 \hline
 \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void
+
+void 
+\end{DoxyReturn}
 \mbox{\Hypertarget{_huffman_8h_a76c0d4c9ccc3f81443c893cd0eb9843f}\label{_huffman_8h_a76c0d4c9ccc3f81443c893cd0eb9843f}} 
 \index{Huffman.h@{Huffman.h}!smallest@{smallest}}
 \index{smallest@{smallest}!Huffman.h@{Huffman.h}}
@@ -222,4 +282,17 @@ Find and return the smallest element of a list. ~\newline
 
 \begin{DoxyReturn}{Returns}
 List$\ast$ 
+\end{DoxyReturn}
+\mbox{\Hypertarget{_huffman_8h_a4647c9c452874d80d31476ea3271a85d}\label{_huffman_8h_a4647c9c452874d80d31476ea3271a85d}} 
+\index{Huffman.h@{Huffman.h}!translate@{translate}}
+\index{translate@{translate}!Huffman.h@{Huffman.h}}
+\doxysubsubsection{\texorpdfstring{translate()}{translate()}}
+{\footnotesize\ttfamily void translate (\begin{DoxyParamCaption}\item[{F\+I\+LE $\ast$}]{dico,  }\item[{char $\ast$}]{s }\end{DoxyParamCaption})}
+
+
+
+Function that compress a .txt thanks to the dictionnary. 
+
+\begin{DoxyReturn}{Returns}
+void 
 \end{DoxyReturn}

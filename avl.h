@@ -26,23 +26,23 @@ int tree_depth(Tree* tree);
 int balance_factor(Tree* tree);
 /**
  * \brief make the element do a right rotation in it's tree.
- * 
+ * \return void
  */
 void right_rotation(Tree** tree);
 /**
  * \brief make the element do a left rotation in it's tree.
- * 
+ * \return void
  */
 void left_rotation(Tree** tree);
 /**
  * \brief balance a tree to got a balance factor >=1.
- * 
+ * \return void
  */
 void balance(Tree** tree);
 
 /**
  * \brief display a tree to the user. 
- * 
+ * \return void
  */
 void print_tree(Tree* tree);
 

@@ -24,7 +24,7 @@
  *       \code{.c}
  *       output(Texte.txt);
  *       \endcode 
- * \return nothing. 
+ * \return nothing
  * 
  * \param file 
  */
@@ -59,12 +59,14 @@ List* list_carac(char* file);
  * \brief display a list to the user.
  * 
  * \param l
+ * \return void
  */
 void print_list(List* l);
 /**
  * \brief display a tree to the user.
  * 
  * \param tree
+ * \return void
  */
 void print_tree(Tree* tree);
 
@@ -76,7 +78,7 @@ void print_tree(Tree* tree);
  *       list_remove(list_charac, 1);
  *       \endcode
  * 
- * 
+ * \return void
  */
 void list_remove(List** l, int n);
 
@@ -105,29 +107,29 @@ Tree* create_huffman(List* element);
 
 /**
  * \brief create a dictionnary.txt File to compress the .txt from the Huffman tree.
- * 
+ * \return void
  */
 void Dico(Tree* root, char* s, FILE* dico);
 
 /**
  * \brief Function to concatenate a string with a character.
- * 
+ * \return void
  */
 void concatenate(char* s, char bit);
 /**
  * \brief Function to remove the last character of a string.
- * 
+ * \return void
  */
 void decon(char* s);
 /**
  * \brief Function that compress a .txt thanks to the dictionnary.
- * 
+ * \return void
  */
 void translate(FILE* dico, char* s);
 
 /**
  * \brief Do all the necessary step to compress a .txt file.
- * 
+ * \return void
  */
 void compress_file(char* name);
 
