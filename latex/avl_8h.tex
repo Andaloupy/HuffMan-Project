@@ -1,0 +1,71 @@
+\hypertarget{avl_8h}{}\doxysection{avl.\+h File Reference}
+\label{avl_8h}\index{avl.h@{avl.h}}
+
+
+headers to the avl.\+c File.  
+
+
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include $<$time.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}structures.\+h\char`\"{}}\newline
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{avl_8h_a4aa9f0c69471517b4aa4eab475fc221f}{tree\+\_\+depth}} (\mbox{\hyperlink{struct_tree}{Tree}} $\ast$tree)
+\begin{DoxyCompactList}\small\item\em return the depth of the tree. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{avl_8h_a88b491033bacbb757087ea653a72246f}{balance\+\_\+factor}} (\mbox{\hyperlink{struct_tree}{Tree}} $\ast$tree)
+\begin{DoxyCompactList}\small\item\em return the balance factor of a tree, the difference between the depth of the right child and the left child. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{avl_8h_acec440cf034d97b5b94fff6e50677cba}\label{avl_8h_acec440cf034d97b5b94fff6e50677cba}} 
+void \mbox{\hyperlink{avl_8h_acec440cf034d97b5b94fff6e50677cba}{right\+\_\+rotation}} (\mbox{\hyperlink{struct_tree}{Tree}} $\ast$$\ast$tree)
+\begin{DoxyCompactList}\small\item\em make the element do a right rotation in it\textquotesingle{}s tree. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{avl_8h_aec16ea430ee8e29901d7a20f8331dde8}\label{avl_8h_aec16ea430ee8e29901d7a20f8331dde8}} 
+void \mbox{\hyperlink{avl_8h_aec16ea430ee8e29901d7a20f8331dde8}{left\+\_\+rotation}} (\mbox{\hyperlink{struct_tree}{Tree}} $\ast$$\ast$tree)
+\begin{DoxyCompactList}\small\item\em make the element do a left rotation in it\textquotesingle{}s tree. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{avl_8h_a71ac8366fc2ee542c8779d084216b691}\label{avl_8h_a71ac8366fc2ee542c8779d084216b691}} 
+void \mbox{\hyperlink{avl_8h_a71ac8366fc2ee542c8779d084216b691}{balance}} (\mbox{\hyperlink{struct_tree}{Tree}} $\ast$$\ast$tree)
+\begin{DoxyCompactList}\small\item\em balance a tree to got a balance factor $>$=1. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{avl_8h_a6a0b13ec3ab82f8593f10a16141e30fd}\label{avl_8h_a6a0b13ec3ab82f8593f10a16141e30fd}} 
+void \mbox{\hyperlink{avl_8h_a6a0b13ec3ab82f8593f10a16141e30fd}{print\+\_\+tree}} (\mbox{\hyperlink{struct_tree}{Tree}} $\ast$tree)
+\begin{DoxyCompactList}\small\item\em display a tree to the user. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+headers to the avl.\+c File. 
+
+\begin{DoxyAuthor}{Author}
+Sébastien Latronche 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2020-\/12-\/11 
+\end{DoxyDate}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{avl_8h_a88b491033bacbb757087ea653a72246f}\label{avl_8h_a88b491033bacbb757087ea653a72246f}} 
+\index{avl.h@{avl.h}!balance\_factor@{balance\_factor}}
+\index{balance\_factor@{balance\_factor}!avl.h@{avl.h}}
+\doxysubsubsection{\texorpdfstring{balance\_factor()}{balance\_factor()}}
+{\footnotesize\ttfamily int balance\+\_\+factor (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_tree}{Tree}} $\ast$}]{tree }\end{DoxyParamCaption})}
+
+
+
+return the balance factor of a tree, the difference between the depth of the right child and the left child. 
+
+\begin{DoxyReturn}{Returns}
+int 
+\end{DoxyReturn}
+\mbox{\Hypertarget{avl_8h_a4aa9f0c69471517b4aa4eab475fc221f}\label{avl_8h_a4aa9f0c69471517b4aa4eab475fc221f}} 
+\index{avl.h@{avl.h}!tree\_depth@{tree\_depth}}
+\index{tree\_depth@{tree\_depth}!avl.h@{avl.h}}
+\doxysubsubsection{\texorpdfstring{tree\_depth()}{tree\_depth()}}
+{\footnotesize\ttfamily int tree\+\_\+depth (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_tree}{Tree}} $\ast$}]{tree }\end{DoxyParamCaption})}
+
+
+
+return the depth of the tree. 
+
+\begin{DoxyReturn}{Returns}
+int 
+\end{DoxyReturn}
